@@ -10,7 +10,7 @@ A simple macro program with gui for discord.
 ## Installing
 [Chrome browser](https://www.google.com/intl/en/chrome/) is requiered
 ### simple usage
-Install macro.exe and double click to use it.</br>
+Install `macro.exe` and double click to use it.</br>
 Nothing else is required for exe file.
 
 ### for developers
