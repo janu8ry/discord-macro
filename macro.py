@@ -63,11 +63,9 @@ if os.path.isfile('macro_cache.bin'):  # if user has cache file
     driver.maximize_window()
     with open('macro_cache.bin', 'rb') as f:
         info = pickle.load(f)
-    login_button = driver.find_element_by_xpath(
-        '/html/body/div/div[2]/div/div[2]/div/div/form/div/div/div[1]/div[3]/div[1]/div/input')
+    login_button = driver.find_element_by_name("email")
     login_button.send_keys(info['email'])
-    login_button = driver.find_element_by_xpath(
-        '/html/body/div/div[2]/div/div[2]/div/div/form/div/div/div[1]/div[3]/div[2]/div/input')
+    login_button = driver.find_element_by_name("password")
     login_button.send_keys(info['pw'])
     login_button = driver.find_element_by_xpath(
         '/html/body/div/div[2]/div/div[2]/div/div/form/div/div/div[1]/div[3]/button[2]')
@@ -152,13 +150,10 @@ def start_macro():
             break
 
     try:
-        discord = driver.find_element_by_xpath('/html/body/div/div[2]/div/div[2]/div/div/div/div/div[2]/div/main/form/div/div/div/div/div[3]/div[2]')
+        discord = driver.find_element_by_css_selector('#app-mount > div.app-1q1i1E > div > div.layers-3iHuyZ.layers-3q14ss > div > div > div > div > div.chat-3bRxxu > div > main > form > div > div > div > div > div.textArea-12jD-V.textAreaSlate-1ZzRVj.slateContainer-3Qkn2x > div.markup-2BOw-j.slateTextArea-1Mkdgw.fontSize16Padding-3Wk7zP')
     except NoSuchElementException:
-        try:
-            discord = driver.find_element_by_class_name('markup-2BOw-j slateTextArea-1Mkdgw fontSize16Padding-3Wk7zP')
-        except NoSuchElementException:
-            messagebox.showinfo("error", "Please login to discord and enter a channel.")
-            return
+        messagebox.showinfo("error", "Please login to discord and enter a channel.")
+        return
     progress_label["text"] = "0%"
 
     for z in range(count):
